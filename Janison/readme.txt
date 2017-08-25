@@ -7,7 +7,7 @@ Built using AngularJS, Bootstrap, C#, MVC, Web API, Entity Framework, LINQ and a
 
 http://angular-ui.github.io/bootstrap/ - Bootstrap components for AngularJS by the AngularUI Team
 
-jQuery included, but might be needed depending on bootstrap functionality desired.
+jQuery included, but might not be needed depending on bootstrap functionality desired.
 jQuery Lite is included with AngularJS.
 If full jQuery is needed, DOM munipulations (selectors) should be done in Directives not Controllers.
 
