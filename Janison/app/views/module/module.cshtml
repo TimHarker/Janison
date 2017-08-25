@@ -1,0 +1,90 @@
+﻿<div class="module" ng-controller="ModuleCtrl as vm">
+    <form name="module" novalidate class="form-group-sm">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Module Information
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row" ng-if="vm.ErrorMessage!=null && vm.ErrorMessage.length>0">
+                        <div class="col-md-8">
+                            <div class="alert alert-danger">
+                                <i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp; {{vm.ErrorMessage}}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error': module.name.$touched && module.name.$invalid }">
+                                <label for="name" class="control-label">Module Name </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-font"></span></span>
+                                    <input type="text" ng-model="vm.module.Name"
+                                           id="name"
+                                           class="form-control"
+                                           placeholder="Module Name"
+                                           name="name" required @*autofocus*@ />
+                                </div>
+                            </div>
+                            <div class="alert alert-danger well-sm" ng-show="module.name.$touched && module.name.$error.required"
+                                 ng-messages="module.name.$error">
+                                <div ng-messages-include="@Url.Content("~/app/views/messages.cshtml")"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error': module.description.$touched && module.description.$invalid }">
+                                <label for="description" class="control-label">Description </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-bold"></span></span>
+                                    <input type="text" ng-model="vm.module.Description"
+                                           id="description"
+                                           class="form-control"
+                                           placeholder="Description" 
+                                           name="description" required />
+                                </div>
+                            </div>
+                            <div class="alert alert-danger well-sm" ng-show="module.description.$touched && module.description.$error.required"
+                                 ng-messages="module.description.$error">
+                                <div ng-messages-include="@Url.Content("~/app/views/messages.cshtml")"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error': module.duration.$touched && module.duration.$invalid }">
+                                <label for="duration" class="control-label">Duration</label>
+                                <select class="form-control"
+                                        name="duration"
+                                        ng-model="vm.module.Duration"
+                                        ng-options="d.Value as d.Name for d in vm.durations">
+                                    @*<option value="">Select a Duration</option>*@
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="dateCreated" class="control-label">Created Date </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    <input type="text" ng-model="vm.module.DateCreated"
+                                           id="dateCreated"
+                                           class="form-control"
+                                           name="dateCreated" disabled="disabled" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-default btn-sm pull-right" ui-sref="modules({courseId: vm.module.CourseID})">&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
+                            <button type="submit" class="btn btn-primary btn-sm pull-right" ng-disabled="!vm.isDirty()" ng-click="vm.save()">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

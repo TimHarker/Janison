@@ -1,0 +1,12 @@
+﻿.modules .heading {
+  margin-bottom: 10px; }
+
+.modules h2 {
+  margin-top: 0; }
+
+.modules span[class^='glyphicon'] {
+  margin-right: 8px; }
+
+.modules table th:last-child, .modules table td:last-child {
+  text-align: right; }
+

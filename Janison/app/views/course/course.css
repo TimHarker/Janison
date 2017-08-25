@@ -1,0 +1,6 @@
+﻿.course button {
+  margin-top: 10px; }
+
+.course button[type='button'] {
+  margin-left: 10px; }
+

@@ -1,0 +1,13 @@
+﻿body {
+    background-color: transparent;
+
+    #loading-bar .bar {
+        top: 50px; /*1 more than height of header*/
+        z-index: 1049;
+        height: 4px;
+    }
+
+    a[ng-click] {
+        cursor: pointer;
+    }
+}

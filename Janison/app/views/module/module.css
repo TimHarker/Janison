@@ -1,0 +1,6 @@
+﻿.module button {
+  margin-top: 10px; }
+
+.module button[type='button'] {
+  margin-left: 10px; }
+

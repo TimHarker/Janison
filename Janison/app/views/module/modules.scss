@@ -1,0 +1,19 @@
+﻿.modules {
+    .heading {
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    span[class^='glyphicon'] {
+        margin-right: 8px;
+    }
+
+    table {
+        th:last-child, td:last-child {
+            text-align: right;
+        }
+    }
+}

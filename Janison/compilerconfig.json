@@ -1,0 +1,30 @@
+﻿[
+  {
+    "outputFile": "app/views/layout/header.css",
+    "inputFile": "app/views/layout/header.scss"
+  },
+  {
+    "outputFile": "app/views/layout/layout.css",
+    "inputFile": "app/views/layout/layout.scss"
+  },
+  {
+    "outputFile": "app/views/course/course.css",
+    "inputFile": "app/views/course/course.scss"
+  },
+  {
+    "outputFile": "app/views/course/courses.css",
+    "inputFile": "app/views/course/courses.scss"
+  },
+  {
+    "outputFile": "app/views/module/module.css",
+    "inputFile": "app/views/module/module.scss"
+  },
+  {
+    "outputFile": "app/views/module/modules.css",
+    "inputFile": "app/views/module/modules.scss"
+  },
+  {
+    "outputFile": "app/views/layout/footer.css",
+    "inputFile": "app/views/layout/footer.scss"
+  }
+]

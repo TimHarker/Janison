@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title ng-bind="$title + ' - Janison'">Janison</title>
+    <base href="/"> @*Required for html5 navigation more than one level deep*@
+
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet" type="text/css" />
+
+    @Styles.RenderFormat(MvcApplication.StyleTagFormat, "~/bundles/librarycss" + MvcApplication.BundleVersion)
+    @Styles.RenderFormat(MvcApplication.StyleTagFormat, "~/bundles/appcss" + MvcApplication.BundleVersion)
+
+    @*<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />*@
+
+    @Scripts.RenderFormat(MvcApplication.ScriptTagFormat, "~/bundles/libraryjs" + MvcApplication.BundleVersion)
+    @Scripts.RenderFormat(MvcApplication.ScriptTagFormat, "~/bundles/appjs" + MvcApplication.BundleVersion)
+
+    <script type="text/javascript">
+
+        angular.element(document).ready(function () {
+            angular.module('app').constant('SITE_URL', '@VirtualPathUtility.ToAbsolute("~/")');
+            angular.module('app').constant('API_URL', '@ConfigurationManager.AppSettings["API_URL"]');
+
+            angular.bootstrap(document, ['app']);
+        });
+
+    </script>
+</head>
+<body ng-controller="LayoutCtrl as layvm">
+
+    <div ng-include="'@Url.Content("~/app/views/layout/header.cshtml")'">
+    </div>
+
+    <div ui-view>
+    </div>
+
+    <div ng-include="'@Url.Content("~/app/views/layout/footer.cshtml")'">
+    </div>
+
+</body>
+</html>

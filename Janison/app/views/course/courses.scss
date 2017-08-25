@@ -1,0 +1,31 @@
+﻿.courses {
+    .heading {
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    span[class^='glyphicon'] {
+        margin-right: 8px;
+    }
+
+    table {
+        thead, tbody {
+            th:last-child, td:last-child {
+                text-align: right;
+            }
+        }
+
+        tbody {
+            tr:hover {
+                cursor: pointer;
+                /* this could be used to highlight the edit anchor when row hovered */
+                .details {
+                    /*text-decoration: underline;*/
+                }
+            }
+        }
+    }
+}

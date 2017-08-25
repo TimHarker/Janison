@@ -1,0 +1,136 @@
+﻿<div class="modules" ng-controller="ModulesCtrl as vm">
+    <div class="col-sm-5">
+        <h2>{{vm.course.Name}}</h2>
+        <span ng-bind="vm.course.Description"></span>
+    </div>
+    <div class="col-sm-7">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-6 form-horizontal">
+                    <label class="col-xs-7 control-label">Duration</label>
+                    <div class="col-xs-5 text-nowrap">
+                        <p class="form-control-static" ng-bind="(vm.course.Duration?vm.course.Duration + ' mins':'')"></p>
+                    </div>
+                    <label class="col-xs-7 control-label">Cost</label>
+                    <div class="col-xs-5 text-nowrap">
+                        <p class="form-control-static" ng-bind="::vm.course.Cost | currency"></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 form-horizontal">
+                    <label class="col-xs-7 control-label text-nowrap">Last Modified</label>
+                    <div class="col-xs-5">
+                        <p class="form-control-static" ng-bind="::vm.course.DateModified | readableDate"></p>
+                    </div>
+                    <label class="col-xs-7 control-label text-nowrap">Created</label>
+                    <div class="col-xs-5">
+                        <p class="form-control-static" ng-bind="::vm.course.DateCreated | readableDate"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 heading">
+        <a ui-sref="module({courseId:vm.course.CourseID})">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add New Module
+        </a>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-condensed table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        <a ng-click="vm.sortColumnDetail='Name';vm.sortDirectionDetail=!vm.sortDirectionDetail;vm.itemFirst=0"
+                           title="Click to Sort">
+                            Module Name
+                            <span class="glyphicon glyphicon-arrow-down" ng-show="vm.sortColumnDetail=='Name'&&vm.sortDirectionDetail"></span>
+                            <span class="glyphicon glyphicon-arrow-up" ng-show="vm.sortColumnDetail=='Name'&&!vm.sortDirectionDetail"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a ng-click="vm.sortColumnDetail='Description';vm.sortDirectionDetail=!vm.sortDirectionDetail;vm.itemFirst=0"
+                           title="Click to Sort">
+                            Description
+                            <span class="glyphicon glyphicon-arrow-down" ng-show="vm.sortColumnDetail=='Description'&&vm.sortDirectionDetail"></span>
+                            <span class="glyphicon glyphicon-arrow-up" ng-show="vm.sortColumnDetail=='Description'&&!vm.sortDirectionDetail"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a ng-click="vm.sortColumnDetail='Duration';vm.sortDirectionDetail=!vm.sortDirectionDetail;vm.itemFirst=0"
+                           title="Click to Sort">
+                            Duration
+                            <span class="glyphicon glyphicon-arrow-down" ng-show="vm.sortColumnDetail=='Duration'&&vm.sortDirectionDetail"></span>
+                            <span class="glyphicon glyphicon-arrow-up" ng-show="vm.sortColumnDetail=='Duration'&&!vm.sortDirectionDetail"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a ng-click="vm.sortColumnDetail='DateCreated';vm.sortDirectionDetail=!vm.sortDirectionDetail;vm.itemFirst=0"
+                           title="Click to Sort">
+                            Date Created
+                            <span class="glyphicon glyphicon-arrow-down" ng-show="vm.sortColumnDetail=='DateCreated'&&vm.sortDirectionDetail"></span>
+                            <span class="glyphicon glyphicon-arrow-up" ng-show="vm.sortColumnDetail=='DateCreated'&&!vm.sortDirectionDetail"></span>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="module in vm.course.Modules | orderBy:vm.sortColumnDetail:vm.sortDirectionDetail | limitTo:vm.itemCount:vm.itemFirst">
+                    <td>
+                        <span ng-bind="::module.Name"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="::module.Description"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="::(module.Duration?module.Duration + ' mins':'')"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="::module.DateCreated | date:'dd/MM/yyyy'"></span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="table-footer">
+                    <td colspan="4">
+                        <span class="pull-right">Modules:&nbsp;&nbsp;<span ng-bind="vm.course.Modules.length"></span>&nbsp;items</span>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <a ui-sref="courses"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>Back to Courses</a>
+        <div class="text-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li ng-class="{'disabled':vm.itemFirst==0}">
+                        <a href="#" ng-click="(vm.itemFirst==0?vm.itemFirst=vm.itemFirst:vm.itemFirst=(vm.itemFirst||0)-vm.itemCount)" aria-label="Previous">
+                            Previous
+                        </a>
+                    </li>
+                    <li ng-class="{'active':vm.itemFirst==0}" ng-show="vm.course.Modules.length>0">
+                        <a href="#" ng-click="vm.itemFirst=0">1</a>
+                    </li>
+                    <li ng-class="{'active':vm.itemFirst==vm.itemCount}" ng-show="vm.page()>1">
+                        <a href="#" ng-click="vm.itemFirst=vm.itemCount">2</a>
+                    </li>
+                    <li class="disabled" ng-show="vm.page()>4">
+                        <span>...</span>
+                    </li>
+                    <li ng-class="{'active':vm.itemFirst==(vm.page()+(vm.page()>3?-2:-1))*vm.itemCount}" ng-show="vm.page()>2">
+                        <a href="#" ng-click="vm.itemFirst=(vm.page()+(vm.page()>3?-2:-1))*vm.itemCount">
+                            {{vm.page()+(vm.page()>3?-1:0)|number}}
+                        </a>
+                    </li>
+                    <li ng-class="{'active':vm.itemFirst==(vm.page()-1)*vm.itemCount}" ng-show="vm.page()>3">
+                        <a href="#" ng-click="vm.itemFirst=(vm.page()-1)*vm.itemCount">
+                            {{vm.page()|number}}
+                        </a>
+                    </li>
+                    <li ng-class="{'disabled':(vm.itemCount+vm.itemFirst)>=vm.course.Modules.length}">
+                        <a href="#" ng-click="((vm.itemCount+vm.itemFirst)>=vm.course.Modules.length?vm.itemFirst=vm.itemFirst:vm.itemFirst=(vm.itemFirst||0)+vm.itemCount)" aria-label="Next">
+                            Next
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
