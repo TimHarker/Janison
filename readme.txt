@@ -1,4 +1,4 @@
-﻿Application Architecture
+Application Architecture
 ========================
 
 No .NET Core used.
@@ -9,9 +9,9 @@ http://angular-ui.github.io/bootstrap/ - Bootstrap components for AngularJS by t
 
 jQuery included, but might not be needed depending on bootstrap functionality desired.
 jQuery Lite is included with AngularJS.
-If full jQuery is needed, DOM munipulations (selectors) should be done in Directives not Controllers.
+If full jQuery is needed, DOM manipulations (selectors) should be done in Directives not Controllers.
 
-Dates are stored in universal time (UTC) to accomodate global indepedence from time zones - dates are formated to local time zone for display.  A custom filter was created to bring more readability/meaning to dates - can be seen on Course Detail page (modules.cshtml), DateCreated and DateModified now show english words.
+Dates are stored in universal time (UTC) to accommodate global independence from time zones - dates are formatted to local time zone for display.  A custom filter was created to bring more readability/meaning to dates - can be seen on Course Detail page (modules.cshtml), DateCreated and DateModified now show English words.
 
 A third party loading bar is used to show progress for restful $http requests.
 
@@ -28,10 +28,10 @@ Assumptions
 
 - Assumed that 'course modified date' needed to be updated when Modules where added to a Course.
 - When a Course is deleted the associated Modules are also removed.
-- Only english speaking countries.
+- Only English speaking countries.
 - Australian date formats.
 - For PC and Tablet use, user experience degraded a little on mobile - but workable.
 - Small dataset sizes (relative to current platform and device hardware usage stats) - i.e. Sorting and Paging done on client-side, might need moving server-side.
-- Not much client-side Date Object minipulations currently needed, otherwise recommend moment.js or similar utility.
-- Not much client-side Object Array minipulation needed, otherwise recommend Lodash/Underscore.js or similar utility.
-- Probably the biggest assumption was that you you'd prefer it to be created in the technologies currently in use at Janison.
+- Not much client-side Date Object manipulations currently needed, otherwise recommend moment.js or similar utility.
+- Not much client-side Object Array manipulation needed, otherwise recommend Lodash/Underscore.js or similar utility.
+- Created in preferred Janison technologies.
